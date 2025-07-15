@@ -1,0 +1,301 @@
+/* Common Utility Classes */
+
+/* Filters Component Styles */
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filters-title, .sort-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.filter-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+  font-weight: 500;
+  text-align: left;
+  position: relative;
+}
+
+.filter-button:hover {
+  background-color: rgba(77, 144, 254, 0.08);
+  color: #4d90fe;
+}
+
+.filter-button.active {
+  background-color: rgba(77, 144, 254, 0.12);
+  color: #4d90fe;
+}
+
+.filter-icon, .sort-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.active-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 16px;
+  background-color: #4d90fe;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Sort Controls Styles */
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sort-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+  font-weight: 500;
+  text-align: left;
+}
+
+.sort-button:hover {
+  background-color: rgba(77, 144, 254, 0.08);
+  color: #4d90fe;
+}
+
+.sort-button.active {
+  background-color: rgba(77, 144, 254, 0.12);
+  color: #4d90fe;
+}
+
+/* Common Button Styles */
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #4d90fe;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3c80fe;
+  box-shadow: 0 2px 6px rgba(77, 144, 254, 0.3);
+}
+
+.btn-secondary {
+  background-color: #f1f3f4;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #e8eaed;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+  box-shadow: 0 2px 6px rgba(244, 67, 54, 0.3);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn-lg {
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background-color: rgba(77, 144, 254, 0.15);
+  color: #4d90fe;
+}
+
+.badge-success {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.badge-warning {
+  background-color: rgba(255, 152, 0, 0.15);
+  color: #FF9800;
+}
+
+.badge-danger {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #F44336;
+}
+
+/* Priority Indicators */
+.priority-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.priority-low {
+  background-color: #8BC34A;
+}
+
+.priority-medium {
+  background-color: #FF9800;
+}
+
+.priority-high {
+  background-color: #F44336;
+}
+
+/* Flex Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-3 {
+  gap: 12px;
+}
+
+.gap-4 {
+  gap: 16px;
+}
+
+/* Spacing Utilities */
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+/* Text Utilities */
+.text-sm {
+  font-size: 13px;
+}
+
+.text-md {
+  font-size: 16px;
+}
+
+.text-lg {
+  font-size: 18px;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-normal {
+  font-weight: 400;
+}
+
+.text-primary {
+  color: #4d90fe;
+}
+
+.text-danger {
+  color: #F44336;
+}
+
+.text-success {
+  color: #4CAF50;
+}
+
+.text-warning {
+  color: #FF9800;
+}
+
+.text-muted {
+  color: #888;
+}

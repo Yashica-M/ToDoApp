@@ -1,0 +1,86 @@
+/* Loading indicator styles */
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fading animation for when content loads */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Real-time sync indicator */
+.sync-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #e6f4fd;
+  color: #0078d4;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.sync-indicator.error {
+  background-color: #fde7e9;
+  color: #d83b46;
+}
+
+.sync-indicator.syncing {
+  background-color: #fff4e5;
+  color: #ff9800;
+}
+
+.sync-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.sync-icon.error {
+  animation: none;
+}
+
+.sync-indicator.syncing .sync-icon {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+.sync-text {
+  font-weight: 500;
+}
+
+.sync-text.error {
+  color: #d83b46;
+}
