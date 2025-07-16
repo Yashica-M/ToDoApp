@@ -2,9 +2,7 @@ import axios from 'axios';
 
 // Create an Axios instance with custom configuration
 const api = axios.create({
-        baseURL: process.env.REACT_APP_SERVER_URL
-            ? `${process.env.REACT_APP_SERVER_URL}/api`
-            : 'http://localhost:5000/api',
+        baseURL: 'https://todoapp-rmqk.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
