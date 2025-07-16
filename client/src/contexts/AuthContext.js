@@ -1,9 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import api from '../api';// Your centralized axios instance
-
 // Create the context
 const AuthContext = createContext();
-
 // Custom hook to use the auth context
 export const useAuth = () => {
     return useContext(AuthContext);
@@ -42,24 +40,25 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (token) => {
-        // Store the token in localStorage
-        localStorage.setItem('token', token);
-        // Set the authorization header for all future axios requests
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        try {
-            // Fetch user data from the correct endpoint after login
-            const { data } = await api.get('/auth/me'); // This is the corrected line
-            setUser(data);
-            return Promise.resolve(); // Indicate success
-        } catch (error) {
-            // If fetching user fails, clear the token and user data
+        if (!token) {
             localStorage.removeItem('token');
             delete api.defaults.headers.common['Authorization'];
             setUser(null);
-            return Promise.reject(error); // Indicate failure
+            return Promise.reject(new Error('No token provided'));
+        }
+        localStorage.setItem('token', token);
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        try {
+            const { data } = await api.get('/auth/me');
+            setUser(data);
+            return Promise.resolve();
+        } catch (error) {
+            localStorage.removeItem('token');
+            delete api.defaults.headers.common['Authorization'];
+            setUser(null);
+            return Promise.reject(error);
         }
     };
-
     const logout = () => {
         // Clear user data and token from state and localStorage
         setUser(null);
@@ -75,8 +74,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         api, // Expose the API instance to components that use AuthContext
     };
-
-    return (
+     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
