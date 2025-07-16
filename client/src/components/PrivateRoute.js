@@ -9,15 +9,11 @@ const PrivateRoute = ({ children }) => {
         return <div>Loading...</div>; // Or a spinner component
     }
 
-    if (isAuthenticated) {
-      if (window.location.pathname !== '/dashboard') {
-        window.location.href = '/dashboard';
+    if (!isAuthenticated) {
+        window.location.href = '/login';
         return null;
-      }
-      return children;
-    } else {
-      return null;
     }
+    return children;
 };
 
 export default PrivateRoute;
