@@ -16,14 +16,14 @@ const DebugPanel = () => {
     
     // Test 1: Check server connectivity
     try {
-      const response = await fetch('http://localhost:5000/');
+      const response = await fetch('https://your-deployed-backend-url/');
       results.serverConnectivity = response.ok ? 'PASS' : 'FAIL';
     } catch (error) {
       results.serverConnectivity = 'FAIL - ' + error.message;
     }
 
     // Test 2: Check API base URL
-    results.apiBaseUrl = api.defaults.baseURL || 'http://localhost:5000/api';
+    results.apiBaseUrl = api.defaults.baseURL || 'https://your-deployed-backend-url/api';
 
     // Test 3: Check authentication
     results.isAuthenticated = isAuthenticated ? 'PASS' : 'FAIL';

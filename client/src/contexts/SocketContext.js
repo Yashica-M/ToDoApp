@@ -15,7 +15,7 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         console.log('SocketContext: Initializing socket connection...');
-        const newSocket = io(process.env.REACT_APP_API_URL || 'http://localhost:5000', {
+        const newSocket = io('https://your-deployed-backend-url', {
             transports: ['websocket', 'polling'],
             autoConnect: true,
             reconnection: true,
