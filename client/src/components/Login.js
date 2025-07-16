@@ -24,7 +24,8 @@ const Login = () => {
     setIsLoading(true);
     // Add a slight delay to show loading animation
     setTimeout(() => {
-      window.location.href = 'http://localhost:5000/api/auth/google';
+      const backendUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000';
+      window.location.href = `${backendUrl}/api/auth/google`;
     }, 800);
   };
 
