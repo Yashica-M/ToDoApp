@@ -24,7 +24,8 @@ const Login = () => {
     setIsLoading(true);
     // Add a slight delay to show loading animation
     setTimeout(() => {
-      const backendUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000';
+      // Use the deployed backend URL or fallback to environment variable
+      const backendUrl = 'https://todoapp-rmqk.onrender.com';
       window.location.href = `${backendUrl}/api/auth/google`;
     }, 800);
   };
