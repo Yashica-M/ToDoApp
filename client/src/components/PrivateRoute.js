@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+// ...existing code...
 import { useAuth } from '../contexts/AuthContext';
 
 const PrivateRoute = ({ children }) => {
@@ -9,7 +9,11 @@ const PrivateRoute = ({ children }) => {
         return <div>Loading...</div>; // Or a spinner component
     }
 
-    return isAuthenticated ? children : <Navigate to="/login" />;
+    if (!isAuthenticated) {
+      window.location.href = '/login';
+      return null;
+    }
+    return children;
 };
 
 export default PrivateRoute;

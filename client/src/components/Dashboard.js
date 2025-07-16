@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// ...existing code...
 import TodoList from './TodoList';
 import TodoFilters from './TodoFilters';
 import SortControls from './SortControls';
@@ -12,11 +12,11 @@ import axios from 'axios';
 import Modal from './ShareModal';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  // ...existing code...
   const { user, logout } = useAuth();
   const handleLogout = () => {
     logout();
-    navigate('/');
+    window.location.href = '/';
   };
   const { todos, loading } = useTodos();
   const socket = useSocket();
@@ -87,10 +87,10 @@ const Dashboard = () => {
       button.style.transform = 'scale(0.95)';
       setTimeout(() => {
         button.style.transform = 'scale(1)';
-        navigate('/add-task');
+        window.location.href = '/add-task';
       }, 150);
     } else {
-      navigate('/add-task');
+      window.location.href = '/add-task';
     }
   };
 

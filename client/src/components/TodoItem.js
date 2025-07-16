@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// ...existing code...
 import { useAuth } from '../contexts/AuthContext';
 import { useTodos } from '../contexts/TodoContext';
 import api from '../api';
@@ -9,7 +9,7 @@ import EditTaskModal from './EditTaskModal';
 import '../styles/enhanced-todo-item.css';
 
 const TodoItem = ({ todo }) => {
-    const navigate = useNavigate();
+    // ...existing code...
     const { user } = useAuth();
     const { fetchTodos } = useTodos();
     const [isShareModalOpen, setIsShareModalOpen] = useState(false);

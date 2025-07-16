@@ -1,13 +1,13 @@
 
 import React, { useEffect } from 'react';
 import '../styles/utilities.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const AuthSuccess = () => {
     const { login } = useAuth();
     const location = useLocation();
-    const navigate = useNavigate();
+    // ...existing code...
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -16,14 +16,14 @@ const AuthSuccess = () => {
         if (token) {
             login(token)
                 .then(() => {
-                    navigate('/dashboard', { replace: true });
+                    window.location.href = '/dashboard';
                 })
                 .catch(error => {
                     console.error("Authentication failed:", error);
-                    navigate('/login?error=auth_failed', { replace: true });
+                    window.location.href = '/login?error=auth_failed';
                 });
         } else {
-            navigate('/login?error=no_token', { replace: true });
+            window.location.href = '/login?error=no_token';
         }
     }, [login, location, navigate]);
 
