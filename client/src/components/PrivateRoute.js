@@ -13,6 +13,10 @@ const PrivateRoute = ({ children }) => {
         window.location.href = '/login';
         return null;
     }
+    if (isAuthenticated && window.location.pathname !== '/dashboard') {
+        window.location.href = '/dashboard';
+        return null;
+    }
     return children;
 };
 
