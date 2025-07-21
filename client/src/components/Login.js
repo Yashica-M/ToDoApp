@@ -19,16 +19,12 @@ const Login = () => {
       y: ((e.clientY - rect.top) / rect.height) * 100,
     });
   };
-
-  const handleGoogleLogin = () => {
-    setIsLoading(true);
-    // Add a slight delay to show loading animation
-    setTimeout(() => {
-      // Use the deployed backend URL or fallback to environment variable
-      const backendUrl = 'https://todoapp-rmqk.onrender.com';
-      window.location.href = `${backendUrl}/api/auth/google`;
-    }, 800);
-  };
+const handleGoogleLogin = () => {
+  setIsLoading(true);
+  setTimeout(() => {
+    window.location.href = '/dashboard';
+  }, 800);
+};
 
   return (
     <div className="login-container" onMouseMove={handleMouseMove}>

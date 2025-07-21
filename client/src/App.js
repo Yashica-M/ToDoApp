@@ -39,25 +39,18 @@ function App() {
                 <Route 
                   path="/dashboard"
                   element={
-                    <ProtectedRoute>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  } 
+                      <Dashboard />                  } 
                 />
                 <Route 
                   path="/add-task"
                   element={
-                    <ProtectedRoute>
                       <AddTaskPage />
-                    </ProtectedRoute>
                   } 
                 />
                 <Route 
                   path="/edit-task/:id"
                   element={
-                    <ProtectedRoute>
                       <AddTaskPage />
-                    </ProtectedRoute>
                   } 
                 />
                 <Route path="/test" element={<TestPage />} />
