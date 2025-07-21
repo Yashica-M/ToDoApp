@@ -15,8 +15,9 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         console.log('SocketContext: Initializing socket connection...');
-        const newSocket = io('https://todoapp-rmqk.onrender.com', {
-            transports: ['websocket', 'polling'],
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://todoapp-rmqk.onrender.com';
+const newSocket = io(SOCKET_URL, {
+  transports: ['websocket', 'polling'],
             autoConnect: true,
             reconnection: true,
             reconnectionDelay: 1000,
