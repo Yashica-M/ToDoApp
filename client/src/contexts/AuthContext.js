@@ -40,25 +40,30 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (token) => {
-        if (!token) {
-            localStorage.removeItem('token');
-            delete api.defaults.headers.common['Authorization'];
-            setUser(null);
-            return Promise.reject(new Error('No token provided'));
-        }
-        localStorage.setItem('token', token);
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        try {
-            const { data } = await api.get('/auth/me');
-            setUser(data);
-            return Promise.resolve();
-        } catch (error) {
-            localStorage.removeItem('token');
-            delete api.defaults.headers.common['Authorization'];
-            setUser(null);
-            return Promise.reject(error);
-        }
-    };
+  console.log('Login function called with token:', token);
+  if (!token) {
+    console.log('No token provided');
+    localStorage.removeItem('token');
+    delete api.defaults.headers.common['Authorization'];
+    setUser(null);
+    return Promise.reject(new Error('No token provided'));
+  }
+  localStorage.setItem('token', token);
+  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  try {
+    console.log('Calling /auth/me endpoint');
+    const { data } = await api.get('/auth/me');
+    console.log('Received data from /auth/me endpoint:', data);
+    setUser(data);
+    return Promise.resolve();
+  } catch (error) {
+    console.log('Error calling /auth/me endpoint:', error);
+    localStorage.removeItem('token');
+    delete api.defaults.headers.common['Authorization'];
+    setUser(null);
+    return Promise.reject(error);
+  }
+};
     const logout = () => {
         // Clear user data and token from state and localStorage
         setUser(null);
