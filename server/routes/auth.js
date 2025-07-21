@@ -48,7 +48,13 @@ router.get(
 // @route   GET /api/auth/me
 // @access  Private
 router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.redirect('/dashboard');
+    // The 'jwt' strategy in passport.js will find the user and attach it to req
+    res.json({
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email,
+        avatar: req.user.avatar
+    });
 });
 
 // @desc    Logout user (optional, as JWT is client-side)
