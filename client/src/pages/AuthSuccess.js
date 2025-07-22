@@ -1,19 +1,32 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const AuthSuccess = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { login } = useAuth();
+  const token = new URLSearchParams(location.search).get('token');
 
   useEffect(() => {
-    // Always redirect to dashboard after Google login
-    navigate('/dashboard', { replace: true });
-  }, [navigate]);
+    if (token) {
+      login(token)
+        .then(() => {
+          navigate('/dashboard', { replace: true });
+        })
+        .catch((error) => {
+          console.error('Authentication failed:', error);
+          navigate('/login?error=auth_failed', { replace: true });
+        });
+    } else {
+      navigate('/login?error=no_token', { replace: true });
+    }
+  }, [login, location, navigate, token]);
 
   return (
     <div>
-      <h2>Redirecting...</h2>
-      <p>You are being redirected to your dashboard.</p>
+      <h2>Authenticating...</h2>
+      <p>Please wait while we log you in.</p>
     </div>
   );
 };
