@@ -22,7 +22,9 @@ const Login = () => {
 const handleGoogleLogin = () => {
   setIsLoading(true);
   setTimeout(() => {
-    window.location.href = '/dashboard';
+    // Use the deployed backend URL or fallback to environment variable
+    const backendUrl = 'https://todoapp-rmqk.onrender.com';
+    window.location.href = `${backendUrl}/api/auth/google`;
   }, 800);
 };
 
